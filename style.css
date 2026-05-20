@@ -1,0 +1,276 @@
+/* ===========================================================
+   Aloka Fernando — academic homepage
+   Clean academic style: serif headings, generous whitespace
+   =========================================================== */
+
+:root {
+  --ink: #1b1b1b;
+  --muted: #5a5a5a;
+  --faint: #888;
+  --accent: #2a6f6b;        /* muted teal, echoing the CV */
+  --accent-dark: #1d5350;
+  --rule: #e3e3e3;
+  --bg: #ffffff;
+  --bg-soft: #f7f8f7;
+  --maxw: 820px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Georgia", "Iowan Old Style", "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s ease, color .15s ease;
+}
+a:hover { color: var(--accent-dark); border-bottom-color: var(--accent-dark); }
+
+/* ---------- Navigation ---------- */
+.site-nav {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.site-nav__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.site-nav__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: var(--ink);
+  border: none;
+}
+.site-nav__links {
+  display: flex;
+  gap: 26px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .92rem;
+  letter-spacing: .4px;
+}
+.site-nav__links a {
+  color: var(--muted);
+  border: none;
+  padding-bottom: 2px;
+}
+.site-nav__links a:hover { color: var(--accent); }
+.site-nav__links a.active {
+  color: var(--ink);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+h1, h2, h3 { line-height: 1.25; color: var(--ink); }
+
+.page-title {
+  font-size: 2rem;
+  margin: 0 0 6px;
+}
+.section-title {
+  font-size: 1.35rem;
+  margin: 44px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.subhead {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: .72rem;
+  margin: 0 0 18px;
+}
+
+p { margin: 0 0 16px; }
+
+/* ---------- Home hero ---------- */
+.hero {
+  display: flex;
+  gap: 34px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.hero__photo {
+  width: 168px;
+  height: 168px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+}
+.hero__body { flex: 1; min-width: 260px; }
+.hero__role {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--accent);
+  font-size: 1rem;
+  margin: 4px 0 16px;
+}
+
+/* ---------- Contact / inline links ---------- */
+.contact-line {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .9rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 6px;
+}
+
+/* ---------- Generic entries (experience, education) ---------- */
+.entry { margin-bottom: 20px; }
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.entry__title { font-weight: 700; }
+.entry__org { color: var(--muted); }
+.entry__date {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .85rem;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+/* ---------- Lists ---------- */
+ul.clean { list-style: none; padding: 0; margin: 0; }
+ul.clean li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+}
+ul.clean li:last-child { border-bottom: none; }
+
+ul.bullets { margin: 0 0 16px; padding-left: 22px; }
+ul.bullets li { margin-bottom: 8px; }
+
+/* ---------- Publications ---------- */
+ol.pubs { counter-reset: pub; list-style: none; padding: 0; margin: 0; }
+ol.pubs li {
+  position: relative;
+  padding: 0 0 20px 38px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+ol.pubs li:last-child { border-bottom: none; }
+ol.pubs li::before {
+  counter-increment: pub;
+  content: counter(pub);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.pub-title { font-weight: 600; }
+.pub-venue { color: var(--muted); }
+.pub-meta {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .82rem;
+  color: var(--faint);
+  margin-top: 4px;
+}
+.me { color: var(--accent-dark); font-weight: 700; }
+.badge {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .72rem;
+  letter-spacing: .3px;
+  background: #fbf3df;
+  color: #8a6d1c;
+  border: 1px solid #ecdcae;
+  padding: 1px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* ---------- Teaching ---------- */
+.teach-block { margin-bottom: 30px; }
+.teach-block h3 {
+  font-size: 1.1rem;
+  margin: 0 0 2px;
+}
+.teach-block .teach-date {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .85rem;
+  color: var(--faint);
+  margin-bottom: 12px;
+}
+.teach-block .programme {
+  font-style: italic;
+  color: var(--muted);
+  margin: 14px 0 6px;
+}
+.course {
+  display: flex;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.course:last-child { border-bottom: none; }
+.course code {
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: .82rem;
+  color: var(--accent-dark);
+  background: var(--bg-soft);
+  padding: 1px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  color: var(--faint);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: .82rem;
+  text-align: center;
+  padding: 28px 24px 40px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .page-title { font-size: 1.7rem; }
+  .hero { gap: 22px; }
+  .hero__photo { width: 130px; height: 130px; }
+  .site-nav__inner { padding: 14px 18px; }
+  .wrap { padding: 34px 18px 60px; }
+}
